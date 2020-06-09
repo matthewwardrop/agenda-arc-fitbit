@@ -1,0 +1,23 @@
+.background {
+  /* viewport-fill: green; */
+}
+
+#textDate {
+  font-size: 20;
+  font-family: System-Bold;
+  text-length: 32;
+  text-anchor: middle;
+  x: 50%;
+  y: 18%;
+  fill: white;
+}
+
+#textTime {
+  font-size: 50;
+  font-family: System-Bold;
+  text-length: 32;
+  text-anchor: middle;
+  x: 50%;
+  y: 33%;
+  fill: white;
+}
