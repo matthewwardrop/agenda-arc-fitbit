@@ -8,6 +8,7 @@ let root = document.getElementById('root');
 const SCREEN_HEIGHT = root.height;
 const SCREEN_WIDTH = root.width;
 const UI_TIMELINE_Y_COVERAGE = 0.5;
+const UI_CURRENT_TIME_OFFSET = 0.5;  // Hours
 const UI_TIMELINE_EVENT_INFO_PADDING = 10;
 const DAYS = {
   0: "Sun",
@@ -91,7 +92,7 @@ export class ClockFace {
     this.timeline_min_theta = min_theta;
     this.timeline_max_theta = max_theta;
     this.timeline_hour_sep = hour_sep;
-    this.timeline_now_theta = 0.5 * hour_sep + min_theta;
+    this.timeline_now_theta = UI_CURRENT_TIME_OFFSET * hour_sep + min_theta;
   }
 
   layoutEventInfo () {
@@ -227,7 +228,7 @@ export class ClockFace {
 
   renderTicks() {
     let mins = (this.timeline_min_theta_hours % 1) * 60;
-    let startHour = this.current_dt.getHours();
+    let startHour = new Date(this.current_dt - UI_CURRENT_TIME_OFFSET * 60 * 60 * 1000).getHours();
     let radius = this.timeline_radius;
     let ctr_x = this.timeline_ctr_x;
     let ctr_y = this.timeline_ctr_y;
