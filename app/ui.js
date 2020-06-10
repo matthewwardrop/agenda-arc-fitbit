@@ -175,7 +175,7 @@ export class ClockFace {
       return;
     }
     this.events = events;
-    this.currentEvent = -1;
+    this.currentEvent = 0;
     this.renderEvents();
     this.renderEventInfo();
   }
