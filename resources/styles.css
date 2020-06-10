@@ -61,7 +61,7 @@
 }
 
 .eventArc {
-  visibility: hidden;
+  display: none;
   fill: white;
 }
 

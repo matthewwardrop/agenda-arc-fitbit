@@ -294,7 +294,7 @@ export class ClockFace {
       }
 
       let el = document.getElementById("arc[" + (arcIndex++) + "]");
-      el.style.visibility = "visible";
+      el.style.display = "inline";
 
       let radius = this.timeline_radius + radiusPadding + (this.currentEvent == i ? 5 : 0);
       el.x = SCREEN_WIDTH / 2 - radius;
@@ -311,7 +311,7 @@ export class ClockFace {
 
     for (let i = arcIndex; i < 8; i++) {
       let el = document.getElementById("arc[" + i + "]");
-      el.style.visibility = "hidden";
+      el.style.display = "none";
     }
 
   }
