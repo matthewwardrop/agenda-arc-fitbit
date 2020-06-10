@@ -114,10 +114,6 @@ export class ClockFace {
     UI_STATUS_MESSAGE_TEXT.y = bbox.y;
     UI_STATUS_MESSAGE_TEXT.width = bbox.width;
     UI_STATUS_MESSAGE_TEXT.height = bbox.height;
-    UI_STATUS_MESSAGE_TEXT.style.fontSize = 30;
-    UI_STATUS_MESSAGE_TEXT.textAnchor = "middle";
-    UI_STATUS_MESSAGE_TEXT.style.textAlign = "center";
-    UI_STATUS_MESSAGE_TEXT.style.verticalAlign = "middle";
 
     UI_EVENT_TITLE.x = UI_TIMELINE_EVENT_INFO_PADDING;
     UI_EVENT_TITLE.y = bbox.y;
@@ -125,7 +121,6 @@ export class ClockFace {
     UI_EVENT_TITLE.width = SCREEN_WIDTH - 2 * UI_TIMELINE_EVENT_INFO_PADDING;
     UI_EVENT_TITLE.fill = "white";
     UI_EVENT_TITLE.style.fontSize = eventNameRatio * bbox.height * 0.8;
-    UI_EVENT_TITLE.style.textAlign = "center";
 
     UI_EVENT_DESC.x = UI_TIMELINE_EVENT_INFO_PADDING;
     UI_EVENT_DESC.y = bbox.y + (eventNameRatio) * bbox.height;
@@ -256,9 +251,7 @@ export class ClockFace {
       
       elLabel.groupTransform.translate.x = (radius - 2 - tick_length) * Math.cos(-labelTheta) + ctr_x;
       elLabel.groupTransform.translate.y = (radius - 2 - tick_length) * Math.sin(-labelTheta) + ctr_y;
-      elLabel.groupTransform.rotate.angle = -parseInt(Math.round((labelTheta - Math.PI / 2) * 180 / Math.PI)); //transform = "rotate(45, " + el.x1 + ", " + el.y1 + " )";
-      elLabel.children[0].x = 0;
-      elLabel.children[0].y = 0;
+      elLabel.groupTransform.rotate.angle = -parseInt(Math.round((labelTheta - Math.PI / 2) * 180 / Math.PI));
     }
   }
 
@@ -269,8 +262,6 @@ export class ClockFace {
     UI_TIMELINE_NOW_TICK.y1 = this.timeline_radius * Math.sin(-this.timeline_min_theta - now_offset) + this.timeline_ctr_y;
     UI_TIMELINE_NOW_TICK.x2 = (this.timeline_radius + 50) * Math.cos(-this.timeline_min_theta - now_offset) + this.timeline_ctr_x;
     UI_TIMELINE_NOW_TICK.y2 = (this.timeline_radius + 50) * Math.sin(-this.timeline_min_theta - now_offset) + this.timeline_ctr_y;
-    UI_TIMELINE_NOW_TICK.style.fill = 'red';
-    UI_TIMELINE_NOW_TICK.style.opacity = 0.5;
   }
 
   renderEvents() {
@@ -303,7 +294,7 @@ export class ClockFace {
       }
 
       let el = document.getElementById("arc[" + (arcIndex++) + "]");
-      el.style.display = "inherit";
+      el.style.visibility = "visible";
 
       let radius = this.timeline_radius + radiusPadding + (this.currentEvent == i ? 5 : 0);
       el.x = SCREEN_WIDTH / 2 - radius;
@@ -320,7 +311,7 @@ export class ClockFace {
 
     for (let i = arcIndex; i < 8; i++) {
       let el = document.getElementById("arc[" + i + "]");
-      el.style.display = "none";
+      el.style.visibility = "hidden";
     }
 
   }

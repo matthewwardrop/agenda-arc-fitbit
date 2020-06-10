@@ -1,78 +1,51 @@
-<svg class="background" id="root">
-  <!--<gradientRect x="0" y="0" width="100%" height="100%"
-    gradient-type="bilinear"
-    gradient-x1="30" gradient-y1="30"
-    gradient-x2="100%-30" gradient-y2="100%-60"
-    gradient-color1="black"
-    gradient-color2="black"
-    gradient-color3="#05B7F5"
-    gradient-color4="blue" />-->
-  
+<svg id="root">
+
   <text id="textDate" />
   <text id="textTime" />
-  <text id="textSyncAge" fill="white" x="0" y="18" font-size="18" text-anchor="start" text-length="20" />
-  <text id="textHeartRate" fill="white" x="100%" y="18" font-size="18" text-anchor="end" text-length="10" />
-  <arc id="arcTimeline" fill="white" arc-width="3" />
+  <text id="textSyncAge" />
+  <text id="textHeartRate" />
+  <arc id="arcTimeline" />
   
-  <line stroke-width="2" id="now" />
+  <line id="now" />
   
   <!-- Ticks -->
-  <line x1="10" y1="10" x2="100%-10" y2="100%-10" fill="white" stroke-width="2" id="tick[0]" />
-  <g id="tickLabel[0]" transform="rotate(45)" >
-    <text text-length="2" fill="white" text-anchor="start" />
-  </g>
-  <line x1="10" y1="10" x2="100%-10" y2="100%-10" fill="white" stroke-width="2"  id="tick[1]"/>
-  <g id="tickLabel[1]" transform="rotate(45)" >
-    <text text-length="2" fill="white" text-anchor="start" />
-  </g>
-  <line x1="10" y1="10" x2="100%-10" y2="100%-10" fill="white" stroke-width="2"  id="tick[2]"/>
-  <g id="tickLabel[2]" transform="rotate(45)" >
-    <text text-length="2" fill="white" text-anchor="start" />
-  </g>
-  <line x1="10" y1="10" x2="100%-10" y2="100%-10" fill="white" stroke-width="2"  id="tick[3]"/>
-  <g id="tickLabel[3]" transform="rotate(45)" >
-    <text text-length="2" fill="white" text-anchor="start" />
-  </g>
-  <line x1="10" y1="10" x2="100%-10" y2="100%-10" fill="white" stroke-width="2"  id="tick[4]"/>
-  <g id="tickLabel[4]" transform="rotate(45)" >
-    <text text-length="2" fill="white" text-anchor="start" />
-  </g>
-  <line x1="10" y1="10" x2="100%-10" y2="100%-10" fill="white" stroke-width="2"  id="tick[5]"/>
-  <g id="tickLabel[5]" transform="rotate(45)" >
-    <text text-length="2" fill="white" text-anchor="start" />
-  </g>
-  <line x1="10" y1="10" x2="100%-10" y2="100%-10" fill="white" stroke-width="2"  id="tick[6]"/>
-  <g id="tickLabel[6]" transform="rotate(45)" >
-    <text text-length="2" fill="white" text-anchor="start" />
-  </g>
-  <line x1="10" y1="10" x2="100%-10" y2="100%-10" fill="white" stroke-width="2"  id="tick[7]"/>
-  <g id="tickLabel[7]" transform="rotate(45)" >
-    <text text-length="2" fill="white" text-anchor="start" />
-  </g>
-  <line x1="10" y1="10" x2="100%-10" y2="100%-10" fill="white" stroke-width="2"  id="tick[8]"/>
-  <g id="tickLabel[8]" transform="rotate(45)" >
-    <text text-length="2" fill="white" text-anchor="start" />
-  </g>
+  <line class="tick" id="tick[0]" />
+  <g class="tickLabel" id="tickLabel[0]"><text /></g>
+  <line class="tick"  id="tick[1]"/>
+  <g class="tickLabel" id="tickLabel[1]"><text /></g>
+  <line class="tick"  id="tick[2]"/>
+  <g class="tickLabel" id="tickLabel[2]"><text /></g>
+  <line class="tick"  id="tick[3]"/>
+  <g class="tickLabel" id="tickLabel[3]"><text /></g>
+  <line class="tick"  id="tick[4]"/>
+  <g class="tickLabel" id="tickLabel[4]"><text /></g>
+  <line class="tick"  id="tick[5]"/>
+  <g class="tickLabel" id="tickLabel[5]"><text /></g>
+  <line class="tick"  id="tick[6]"/>
+  <g class="tickLabel" id="tickLabel[6]"><text /></g>
+  <line class="tick"  id="tick[7]"/>
+  <g class="tickLabel" id="tickLabel[7]"><text /></g>
+  <line class="tick"  id="tick[8]"/>
+  <g class="tickLabel" id="tickLabel[8]"><text /></g>
 
   <!-- Event arcs -->
-  <arc fill="white" class='eventArc' id="arc[0]" />
-  <arc fill="white" class='eventArc' id="arc[1]" />
-  <arc fill="white" class='eventArc' id="arc[2]" />
-  <arc fill="white" class='eventArc' id="arc[3]" />
-  <arc fill="white" class='eventArc' id="arc[4]" />
-  <arc fill="white" class='eventArc' id="arc[5]" />
-  <arc fill="white" class='eventArc' id="arc[6]" />
-  <arc fill="white" class='eventArc' id="arc[7]" />
-  <arc fill="white" class='eventArc' id="arc[8]" />
+  <arc class='eventArc' id="arc[0]" />
+  <arc class='eventArc' id="arc[1]" />
+  <arc class='eventArc' id="arc[2]" />
+  <arc class='eventArc' id="arc[3]" />
+  <arc class='eventArc' id="arc[4]" />
+  <arc class='eventArc' id="arc[5]" />
+  <arc class='eventArc' id="arc[6]" />
+  <arc class='eventArc' id="arc[7]" />
+  <arc class='eventArc' id="arc[8]" />
   
   
-  <textarea id="statusMessage" fill="white" text-length="200" />
-  <textarea id="eventName" rows="1" text-overflow="ellipsis" text-length="100" fill="white"/>
-  <textarea id="eventDesc" x="5" y="5" width="100%-10"  text-length="1000"
-    font-family="System-Regular" fill="white" font-size="24" text-overflow="ellipsis" />
-  <textarea id="eventLocation" text-overflow="ellipsis" rows="1" text-length="100" text-anchor="middle" fill="white" />
+  <textarea id="statusMessage" />
+  <textarea id="eventName" />
+  <textarea id="eventDesc" />
+  <textarea id="eventLocation" />
 
-  <rect id="eventPrev" fill="none" x="0" y="0" width="50%" height="100%" pointer-events="visible" />
-  <rect id="eventNext" fill="none" x="50%" y="0" width="50%" height="100%" pointer-events="visible" />
+  <rect id="eventPrev" />
+  <rect id="eventNext" />
   
 </svg>
