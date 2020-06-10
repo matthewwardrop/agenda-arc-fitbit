@@ -335,7 +335,7 @@ export class ClockFace {
       UI_EVENT_DESC.text = "";
       UI_EVENT_LOC.text = "";
     } else {
-      UI_STATUS_MESSAGE_TEXT = "";
+      UI_STATUS_MESSAGE_TEXT.text = "";
       UI_EVENT_TITLE.text = (this.eventsShowing[this.currentEvent].title || "No Title");
       UI_EVENT_DESC.text = this.eventsShowing[this.currentEvent].description || "No Description";
       UI_EVENT_LOC.text = this.eventsShowing[this.currentEvent].location || "No Location";
