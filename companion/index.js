@@ -130,7 +130,10 @@ if (!companion.permissions.granted("access_calendar")) {
 }
 companion.wakeInterval = 10 * MILLISECONDS_PER_MINUTE;  // Sync every 10 minutes
 companion.addEventListener("wakeinterval", doSync);  // Listen for the event
-companion.addEventListener("readystatechange", doSync);
+companion.addEventListener("readystatechange", () => {
+  CURRENT_EVENTS=null;
+  doSync();
+});
 // Event fires when a setting is changed
 settings.onchange = function(evt) {
   doSync();

@@ -171,9 +171,6 @@ export class ClockFace {
   }
 
   setEvents(events) {
-    if (JSON.stringify(events) == JSON.stringify(this.events)) {
-      return;
-    }
     this.events = events;
     this.currentEvent = 0;
     this.renderEvents();
