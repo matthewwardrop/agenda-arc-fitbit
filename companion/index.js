@@ -54,24 +54,34 @@ function doSync() {
     return (
       calendars.searchEvents(eventsQuery)
       .then(function(todayEvents) {
+        let day_start = new Date();
+        day_start.setHours(0,0,0,0);
+        
+        var day_end = new Date();
+        day_end.setHours(23,59,59,999);
     
         let deviceEvents = [];
         todayEvents.forEach(event => {
-          if ((event.isAllDay || event.title === "Out of office") && settings.getItem("timeline_hide_allday") === "true" || 
-          event.userStatus === "AttendeeStatus.Declined" && settings.getItem("timeline_hide_declined") === "true") {
+          let eventIsAllDay = event.isAllDay || (event.startDate <= day_start && event.endDate >= day_end );
+          if (
+              eventIsAllDay && settings.getItem("timeline_hide_allday") === "true"
+              || event.userStatus === "AttendeeStatus.Declined" && settings.getItem("timeline_hide_declined") === "true"
+              || event.title === "Out of office"
+          ) {
             return;
           }
+
           deviceEvents.push({
             title: event.title,
             description: event.description,
             location: event.location,
             color: getCalendarColour(event.calendarId, calendarIdMap),
-            startDateHour: event.startDate.getHours(),
-            startDateMinute: event.startDate.getMinutes(),
-            endDateHour: event.endDate.getHours(),
-            endDateMinutes: event.endDate.getMinutes(),
-            startHours: event.startDate / 3.6e6,
-            endHours: event.endDate / 3.6e6,
+            startDateHour: event.isAllDay ? event.startDate.getUTCHours() : event.startDate.getHours(),
+            startDateMinute: event.isAllDay ? event.startDate.getUTCMinutes() :  event.startDate.getMinutes(),
+            endDateHour: event.isAllDay ? event.endDate.getUTCHours() : event.endDate.getHours(),
+            endDateMinutes: event.isAllDay ? event.endDate.getUTCMinutes() : event.endDate.getMinutes(),
+            startHours: (event.startDate.getTime() + (event.isAllDay ? -event.getTimezoneOffset() * 6e4 : 0)) / 3.6e6,
+            endHours: (event.endDate.getTime() + (event.isAllDay ? -event.getTimezoneOffset() * 6e4 : 0)) / 3.6e6,
           });
         });
 
