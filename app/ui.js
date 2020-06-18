@@ -318,7 +318,7 @@ export class ClockFace {
       el.width = 2 * radius;
       el.height = 2 * radius;
       el.arcWidth = this.currentEvent == i ? currentArcWidth : arcWidth;
-      el.style.fill = eventInfo.color;
+      el.style.fill = eventInfo.isAccepted === true ? eventInfo.color : "#aaaaaa";
 
       el.startAngle = util.ang2arc(startAngle);
       el.sweepAngle = Math.max(1, util.ang2sweep(sweepAngle));

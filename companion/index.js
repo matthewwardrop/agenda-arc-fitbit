@@ -65,7 +65,7 @@ function doSync() {
           let eventIsAllDay = event.isAllDay || (event.startDate <= day_start && event.endDate >= day_end );
           if (
               eventIsAllDay && settings.getItem("timeline_hide_allday") === "true"
-              || event.userStatus === "AttendeeStatus.Declined" && settings.getItem("timeline_hide_declined") === "true"
+              || event.userStatus === "declined" && settings.getItem("timeline_hide_declined") === "true"
               || event.title === "Out of office"
           ) {
             return;
@@ -76,6 +76,7 @@ function doSync() {
             description: event.description,
             location: event.location,
             color: getCalendarColour(event.calendarId, calendarIdMap),
+            isAccepted: event.userStatus === "accepted",
             startDateHour: event.isAllDay ? event.startDate.getUTCHours() : event.startDate.getHours(),
             startDateMinute: event.isAllDay ? event.startDate.getUTCMinutes() :  event.startDate.getMinutes(),
             endDateHour: event.isAllDay ? event.endDate.getUTCHours() : event.endDate.getHours(),
