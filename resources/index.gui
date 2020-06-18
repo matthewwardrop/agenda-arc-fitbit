@@ -38,6 +38,17 @@
   <arc class='eventArc' id="arc[6]" />
   <arc class='eventArc' id="arc[7]" />
   <arc class='eventArc' id="arc[8]" />
+  <arc class='eventArc' id="arc[9]" />
+  <arc class='eventArc' id="arc[10]" />
+  <arc class='eventArc' id="arc[11]" />
+  <arc class='eventArc' id="arc[12]" />
+  <arc class='eventArc' id="arc[13]" />
+  <arc class='eventArc' id="arc[14]" />
+  <arc class='eventArc' id="arc[15]" />
+  <arc class='eventArc' id="arc[16]" />
+  <arc class='eventArc' id="arc[17]" />
+  <arc class='eventArc' id="arc[18]" />
+  <arc class='eventArc' id="arc[19]" />
   
   
   <textarea id="statusMessage" />

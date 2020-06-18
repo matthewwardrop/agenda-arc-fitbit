@@ -10,6 +10,7 @@ const SCREEN_WIDTH = root.width;
 const UI_TIMELINE_Y_COVERAGE = 0.5;
 const UI_CURRENT_TIME_OFFSET = 0.5;  // Hours
 const UI_TIMELINE_EVENT_INFO_PADDING = 10;
+const UI_TIMELINE_MAX_EVENT_ARCS = 20;
 const DAYS = {
   0: "Sun",
   1: "Mon",
@@ -286,8 +287,9 @@ export class ClockFace {
 
       this.eventsShowing.push(eventInfo);
 
-      if (arcIndex >= 7) {
-        console.log("Unable to show event due to insufficient arc placeholders.")
+      if (arcIndex >= UI_TIMELINE_MAX_EVENT_ARCS - 1) {
+        console.log("Unable to show event due to insufficient arc placeholders.");
+        continue;
       }
 
       let el = document.getElementById("arc[" + (arcIndex++) + "]");
@@ -306,7 +308,7 @@ export class ClockFace {
 
     }
 
-    for (let i = arcIndex; i < 8; i++) {
+    for (let i = arcIndex; i < UI_TIMELINE_MAX_EVENT_ARCS; i++) {
       let el = document.getElementById("arc[" + i + "]");
       el.style.display = "none";
     }
