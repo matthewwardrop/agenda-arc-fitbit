@@ -270,10 +270,14 @@ export class ClockFace {
   renderEventArcs() {
     this.eventsShowing = [];
     let arcIndex = 0;
-    let radiusPadding = 10;
+    let radiusPadding = 12;
+    let arcWidth = 5;
+    let currentArcWidth = 10;
     let min_theta = this.timeline_min_theta;
     let hour_sep = this.timeline_hour_sep;
     let ctr_y = this.timeline_ctr_y;
+
+    let tracks = [];
 
     for (let i = 0; i < this.events.length; i++) {
       let eventInfo = this.events[i];
@@ -292,15 +296,28 @@ export class ClockFace {
         continue;
       }
 
+      let targetTrack = null;
+      for (let track = 0; track < tracks.length; track++) {
+        if (tracks[track] < eventInfo.startHours) {
+          targetTrack = track;
+          tracks[track] = eventInfo.endHours;
+          break;
+        }
+      }
+      if (targetTrack == null) {
+        targetTrack = tracks.length + 1;
+        tracks.push(eventInfo.endHours);
+      }
+
       let el = document.getElementById("arc[" + (arcIndex++) + "]");
       el.style.display = "inline";
 
-      let radius = this.timeline_radius + radiusPadding + (this.currentEvent == i ? 5 : 0);
+      let radius = this.timeline_radius + (1 + track) * radiusPadding + (this.currentEvent == i ? (currentArcWidth - arcWidth) / 2 : 0);
       el.x = SCREEN_WIDTH / 2 - radius;
       el.y = ctr_y - radius;
       el.width = 2 * radius;
       el.height = 2 * radius;
-      el.arcWidth = this.currentEvent == i ? 10 : 5;
+      el.arcWidth = this.currentEvent == i ? currentArcWidth : arcWidth;
       el.style.fill = eventInfo.color;
 
       el.startAngle = util.ang2arc(startAngle);
