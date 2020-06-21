@@ -76,7 +76,7 @@ function doSync() {
             description: event.description,
             location: event.location,
             color: getCalendarColour(event.calendarId, calendarIdMap),
-            isAccepted: event.userStatus === "accepted",
+            isAccepted: event.userStatus === "accepted" || event.userStatus === "unknown",
             startDateHour: event.isAllDay ? event.startDate.getUTCHours() : event.startDate.getHours(),
             startDateMinute: event.isAllDay ? event.startDate.getUTCMinutes() :  event.startDate.getMinutes(),
             endDateHour: event.isAllDay ? event.endDate.getUTCHours() : event.endDate.getHours(),
