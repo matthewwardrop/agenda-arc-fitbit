@@ -1,6 +1,6 @@
 #textDate {
   x: 50%;
-  y: 18%;
+  y: 54;
   fill: white;
   text-anchor: middle;
   font-size: 20;
@@ -10,7 +10,7 @@
 
 #textTime {
   x: 50%;
-  y: 33%;
+  y: 99;
   fill: white;
   text-anchor: middle;
   font-size: 50;
