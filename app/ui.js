@@ -274,6 +274,7 @@ export class ClockFace {
     let arcWidth = 5;
     let currentArcWidth = 10;
     let min_theta = this.timeline_min_theta;
+    let max_theta = this.timeline_max_theta;
     let hour_sep = this.timeline_hour_sep;
     let ctr_y = this.timeline_ctr_y;
 
@@ -287,6 +288,15 @@ export class ClockFace {
 
       if (startAngle < this.timeline_max_theta || endAngle > this.timeline_min_theta) {
         continue;
+      }
+
+      // Clip startAngle and endAngle to that renderable on screen
+      if (startAngle > min_theta) {
+        sweepAngle += (startAngle - min_theta);
+        startAngle = min_theta;
+      }
+      if (endAngle < max_theta) {
+        sweepAngle = max_theta - startAngle;
       }
 
       this.eventsShowing.push(eventInfo);
