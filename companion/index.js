@@ -81,8 +81,8 @@ function doSync() {
             startDateMinute: event.isAllDay ? event.startDate.getUTCMinutes() :  event.startDate.getMinutes(),
             endDateHour: event.isAllDay ? event.endDate.getUTCHours() : event.endDate.getHours(),
             endDateMinutes: event.isAllDay ? event.endDate.getUTCMinutes() : event.endDate.getMinutes(),
-            startHours: (event.startDate.getTime() + (event.isAllDay ? -event.getTimezoneOffset() * 6e4 : 0)) / 3.6e6,
-            endHours: (event.endDate.getTime() + (event.isAllDay ? -event.getTimezoneOffset() * 6e4 : 0)) / 3.6e6,
+            startHours: (event.startDate.getTime() + (event.isAllDay ? event.startDate.getTimezoneOffset() * 6e4 : 0)) / 3.6e6,
+            endHours: (event.endDate.getTime() + (event.isAllDay ? event.startDate.getTimezoneOffset() * 6e4 : 0)) / 3.6e6,
           });
         });
 
