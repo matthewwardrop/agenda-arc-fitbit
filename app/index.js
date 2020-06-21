@@ -26,12 +26,16 @@ import { readFileSync } from "fs";
 function updateCalendarEvents() {
   let fileName;
   while (fileName = inbox.nextFile()) {
-    if (fileName === "calendar_events") {
-      let events = readFileSync(fileName, "cbor");
-      clockFace.setEvents(events);
-    } else if (fileName === "calendar_tic") {
-      clockFace.eventsLastUpdated = readFileSync(fileName, "cbor");
+    if (fileName === "companion_payload") {
+      console.log("Payload received.");
+      let payload = readFileSync(fileName, "cbor");
+      clockFace.eventsLastUpdated = payload.timestamp;
       clockFace.renderSyncAge();
+      if (payload.error !== undefined) {
+        clockFace.setError(payload.error);
+      } else if (payload.events !== undefined) {
+        clockFace.setEvents(payload.events);
+      }
     }
   }
 }

@@ -178,6 +178,10 @@ export class ClockFace {
     this.renderEventInfo();
   }
 
+  setError(error) {
+    this.renderError(error);
+  }
+
   // Rendering of ticks / event info
 
   renderTimeText() {
@@ -239,7 +243,7 @@ export class ClockFace {
       } else {
         elLabel.children[0].text = util.zeroPad((startHour + i) % 24);
       }
-      
+
       elLabel.children[0].style.fontSize = tick_length + 1;
       let theta = this.timeline_min_theta + (i - mins / 60) * this.timeline_hour_sep;
 
@@ -250,7 +254,7 @@ export class ClockFace {
       el.y2 = (radius - 2 - tick_length) * Math.sin(-theta) + ctr_y;
 
       let labelTheta = theta + 0.1 * this.timeline_hour_sep;
-      
+
       elLabel.groupTransform.translate.x = (radius - 2 - tick_length) * Math.cos(-labelTheta) + ctr_x;
       elLabel.groupTransform.translate.y = (radius - 2 - tick_length) * Math.sin(-labelTheta) + ctr_y;
       elLabel.groupTransform.rotate.angle = -parseInt(Math.round((labelTheta - Math.PI / 2) * 180 / Math.PI));
@@ -362,6 +366,13 @@ export class ClockFace {
       UI_EVENT_DESC.text = eventShown.description || "No Description";
       UI_EVENT_LOC.text = eventShown.location || "No Location";
     }
+  }
+
+  renderError(error) {
+    UI_STATUS_MESSAGE_TEXT.text = error;
+    UI_EVENT_TITLE.text = "";
+    UI_EVENT_DESC.text = "";
+    UI_EVENT_LOC.text = "";
   }
 
 }
