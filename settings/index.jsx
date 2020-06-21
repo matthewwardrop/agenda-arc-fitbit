@@ -25,17 +25,17 @@ function settingsComponent(props) {
         {props.settingsStorage.getItem("cal:" + calendar["title"] + ':enabled') === "true" &&
           <ColorSelect
             centered={true}
-            settingsKey={"cal:" + calendar["title"] + ':color'} 
+            settingsKey={"cal:" + calendar["title"] + ':color'}
             colors={[
               {color: 'white'},
               {color: 'tomato'},
               {color: 'sandybrown'},
               {color: 'gold'},
+              {color: 'lightgreen'},
               {color: 'aquamarine'},
               {color: 'deepskyblue'},
               {color: 'plum'}
             ]}
-            onSelection={(value) => console.log(value)}
           />
         }
       </Section>)}
