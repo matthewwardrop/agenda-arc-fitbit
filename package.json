@@ -16,11 +16,7 @@
     "requestedPermissions": [
       "access_activity",
       "access_calendar",
-      "access_exercise",
       "access_heart_rate",
-      "access_internet",
-      "access_location",
-      "access_user_profile",
       "run_background"
     ],
     "buildTargets": [
