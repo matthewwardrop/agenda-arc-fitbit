@@ -39,15 +39,22 @@ inbox.addEventListener("newfile", updateCalendarEvents);
 updateCalendarEvents();
 
 // Heart rate updates
+import { BodyPresenceSensor } from "body-presence";
 import { HeartRateSensor } from "heart-rate";
 
+if (BodyPresenceSensor) {
+  const bodyPresence = new BodyPresenceSensor();
+  bodyPresence.start();
+}
+
 if (HeartRateSensor) {
-   console.log("This device has a HeartRateSensor!");
-   const hrm = new HeartRateSensor();
-   hrm.addEventListener("reading", () => {
-     clockFace.setHeartRate(hrm.heartRate);
-   });
-   hrm.start();
-} else {
-   console.log("This device does NOT have a HeartRateSensor!");
+  const hrm = new HeartRateSensor();
+  hrm.addEventListener("reading", () => {
+    if (BodyPresenceSensor) {
+      clockFace.setHeartRate(bodyPresence.present ? hrm.heartRate : null);
+    } else {
+      clockFace.setHeartRate(hrm.heartRate);
+    }
+  });
+  hrm.start();
 }

@@ -205,7 +205,11 @@ export class ClockFace {
   }
 
   renderHeartRate() {
-    UI_HEARTRATE_TEXT.text = "♥ " + this.current_hr;
+    if (this.current_hr === null) {
+      UI_HEARTRATE_TEXT.text = "♥ --";
+    } else {
+      UI_HEARTRATE_TEXT.text = "♥ " + this.current_hr;
+    }
   }
 
   renderTimeline() {
