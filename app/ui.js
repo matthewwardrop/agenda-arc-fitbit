@@ -198,9 +198,9 @@ export class ClockFace {
 
   renderSyncAge() {
       if (this.eventsLastUpdated < 0) {
-        UI_SYNCAGE_TEXT.text = "⏰ Pending...";
+        UI_SYNCAGE_TEXT.text = "Loading...";
       } else {
-        UI_SYNCAGE_TEXT.text = "⏰ " + Math.max(0, Math.floor((new Date() - this.eventsLastUpdated) / 60 / 1000)) + " mins";
+        UI_SYNCAGE_TEXT.text = "Data age: " + Math.max(0, Math.floor((new Date() - this.eventsLastUpdated) / 60 / 1000)) + " mins";
       }
   }
 
