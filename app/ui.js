@@ -346,6 +346,7 @@ export class ClockFace {
     if (this.currentEvent >= this.eventsShowing.length) {
       this.currentEvent = 0;
     }
+    let eventShown = this.eventsShowing[this.currentEvent];
     if (this.eventsShowing.length == 0) {
       UI_STATUS_MESSAGE_TEXT.text = "No upcoming events";
       UI_EVENT_TITLE.text = "";
@@ -353,9 +354,9 @@ export class ClockFace {
       UI_EVENT_LOC.text = "";
     } else {
       UI_STATUS_MESSAGE_TEXT.text = "";
-      UI_EVENT_TITLE.text = (this.eventsShowing[this.currentEvent].title || "No Title");
-      UI_EVENT_DESC.text = this.eventsShowing[this.currentEvent].description || "No Description";
-      UI_EVENT_LOC.text = this.eventsShowing[this.currentEvent].location || "No Location";
+      UI_EVENT_TITLE.text = eventShown.title || "No Title";
+      UI_EVENT_DESC.text = eventShown.description || "No Description";
+      UI_EVENT_LOC.text = eventShown.location || "No Location";
     }
   }
 
