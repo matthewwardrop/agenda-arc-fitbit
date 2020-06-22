@@ -1,8 +1,8 @@
 {
   "name": "agenda-arc-clockface",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "devDependencies": {
     "@fitbit/sdk": "~4.1.0",
     "@fitbit/sdk-cli": "^1.7.2"
@@ -11,8 +11,6 @@
     "appUUID": "46bc1328-c480-4927-b94f-6693088fd661",
     "appType": "clockface",
     "appDisplayName": "Agenda Arc",
-    "iconFile": "resources/icon.png",
-    "wipeColor": "#ffffff",
     "requestedPermissions": [
       "access_activity",
       "access_calendar",
