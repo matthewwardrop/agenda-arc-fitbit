@@ -15,6 +15,13 @@ I can increase the maximum number of events.
 
 This is an open-source clockface, and contributions are welcome.
 
+## Screenshots
+
+<img src="docs/main.png" />
+<img src="docs/main2.png" />
+<img src="docs/main_ionic.png" />
+<img src="docs/settings.png" height="400" />
+
 ## Building locally
 
 To build and test locally, you will need a fitbit account, and either a device
