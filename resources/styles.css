@@ -53,7 +53,7 @@
 }
 
 .tickLabel text {
-  x: 0;  /* positioned relative to .tickLabel container */
+  x: 0; /* positioned relative to .tickLabel container */
   y: 0;
   fill: white;
   font-family: System-Bold;

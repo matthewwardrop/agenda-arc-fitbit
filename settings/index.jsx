@@ -1,5 +1,10 @@
 function settingsComponent(props) {
-  let calendars = JSON.parse(props.settingsStorage.getItem('calendars'));
+  let calendars = null;
+  try {
+    calendars = JSON.parse(props.settingsStorage.getItem('calendars'));
+  } catch (e) {
+    console.log(e);
+  }
   return (
     <Page>
       <Section
@@ -16,7 +21,7 @@ function settingsComponent(props) {
           settingsKey={"timeline_hide_declined"}
           label="Hide declined events" />
       </Section>
-        <Section title="Calendars">
+      <Section title="Calendars">
         {calendars !== null ? calendars.map(calendar => <Section>
           <Toggle
             settingsKey={"cal:" + calendar["title"] + ':enabled'}
@@ -27,14 +32,14 @@ function settingsComponent(props) {
               centered={true}
               settingsKey={"cal:" + calendar["title"] + ':color'}
               colors={[
-                {color: 'white'},
-                {color: 'tomato'},
-                {color: 'sandybrown'},
-                {color: 'gold'},
-                {color: 'lightgreen'},
-                {color: 'aquamarine'},
-                {color: 'deepskyblue'},
-                {color: 'plum'}
+                { color: 'white' },
+                { color: 'tomato' },
+                { color: 'sandybrown' },
+                { color: 'gold' },
+                { color: 'lightgreen' },
+                { color: 'aquamarine' },
+                { color: 'deepskyblue' },
+                { color: 'plum' }
               ]}
             />
           }

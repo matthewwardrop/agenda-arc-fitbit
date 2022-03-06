@@ -4,8 +4,9 @@
   "private": true,
   "license": "MIT",
   "devDependencies": {
-    "@fitbit/sdk": "~4.1.0",
-    "@fitbit/sdk-cli": "^1.7.2"
+    "@fitbit/sdk": "^4.3.2",
+    "@fitbit/sdk-cli": "^1.7.3",
+    "prettier": "2.5.1"
   },
   "fitbit": {
     "appUUID": "46bc1328-c480-4927-b94f-6693088fd661",

@@ -8,24 +8,24 @@ import clock from "clock";
 clock.granularity = "minutes"; // Update the clock every minute
 clock.ontick = (evt) => {
   clockFace.setTime(evt.date);
-}
+};
 
 // Change currentEvent back to next when screen turns off
 import { display } from "display";
 
 display.addEventListener("change", () => {
-   if (!display.on) {
-     clockFace.setCurrentEvent(0);
-   }
+  if (!display.on) {
+    clockFace.setCurrentEvent(0);
+  }
 });
 
 // Calendar file updates
-import { inbox } from "file-transfer"
+import { inbox } from "file-transfer";
 import { readFileSync } from "fs";
 
 function updateCalendarEvents() {
   let fileName;
-  while (fileName = inbox.nextFile()) {
+  while ((fileName = inbox.nextFile())) {
     if (fileName === "companion_payload") {
       console.log("Payload received.");
       let payload = readFileSync(fileName, "cbor");
