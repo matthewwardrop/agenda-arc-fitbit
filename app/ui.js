@@ -54,7 +54,7 @@ const UI_EVENT_NEXT = document.getElementById("eventNext");
 
 export class ClockFace {
   constructor() {
-    this.hours_shown = 7;
+    this.hours_shown = 8;
     this.current_dt = null;
     this.relayout();
     this.events = [];
